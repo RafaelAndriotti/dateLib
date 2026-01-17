@@ -1,4 +1,10 @@
+import { erros } from "./err/trataErros.js";
+
 function diferencaEntreDatas(dataI, dataF) {
+
+    if (!(dataF instanceof Date) || !(dataI instanceof Date)){
+        throw new Error(erros.INVALID_DATE)
+    }
 
     const tempo = dataF.getTime() - dataI.getTime()
     const msDia = Math.abs(1000 * 60 * 60 * 24)

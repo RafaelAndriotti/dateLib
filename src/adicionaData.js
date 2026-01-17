@@ -1,13 +1,19 @@
+import { erros } from "./err/trataErros.js";
+
 function adicionaDias(data, dias) {
 
-    if (!(data instanceof Date) || isNaN (data)) {
-        throw new Error ('Parametro invalido, o objeto deve ser do tipo Date')
+    if (!(data instanceof Date) || isNaN (data.getTime())) {
+        throw new Error (erros.INVALID_DATE)
+    }
+
+    if ( isNaN (dias)){
+        throw new Error(erros.INVALID_TYPE)
     }
 
     const novaData = new Date(data);
     novaData.setDate(novaData.getDate() + Number(dias));
 
-    console.log(novaData)
+    return novaData
 
 }
 
@@ -18,13 +24,18 @@ function adicionaDias(data, dias) {
 function adicionaMeses(data, mes){
 
     if (!(data instanceof Date) || isNaN (data)) {
-        throw new Error ('Parametro invalido, o objeto deve ser do tipo Date')
+        throw new Error (erros.INVALID_DATE)
     }
+
+    if ( isNaN (mes)){
+        throw (erros.INVALID_TYPE)
+    }
+
 
     const novaData = new Date(data);
     novaData.setMonth(novaData.getMonth() + Number(mes))
 
-    console.log(novaData)
+    return novaData
 }
 
 // const data = new Date('2026-01-14')
@@ -34,15 +45,20 @@ function adicionaMeses(data, mes){
 function adicionaAnos (data, ano) {
 
     if (!(data instanceof Date) || isNaN (data)) {
-        throw new Error ('Parametro invalido, o objeto deve ser do tipo Date')
+        throw new Error (erros.INVALID_DATE)
+    }
+
+    if ( isNaN (ano)){
+        throw new Error (erros.INVALID_TYPE)
     }
 
     const novaData = new Date(data)
     novaData.setFullYear(novaData.getFullYear() + Number(ano))
 
-    console.log(novaData)
+    return novaData
 }
 
 // const data = new Date('2026-01-14')
 
-// adicionaAnos(data, 1)
+// console.log(adicionaAnos(data, undefined));
+ 

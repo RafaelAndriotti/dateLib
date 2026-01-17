@@ -1,5 +1,10 @@
+import { erros } from "./err/trataErros.js";
+
 function dataFormatada(data, format = "DD/MM/YYYY"){
 
+    if(!(data instanceof Date)) {
+        throw new Error(erros.INVALID_DATE)
+    }
     //Criando variaveis para dia, mes e ano e convertendo-as em String para formatacao
     const
         dia = data.getDate().toString(),
